@@ -1,0 +1,6 @@
+Curso: PL
+Profesor: Profe Claudia
+Proyecto: aprende.pl
+Hora: 10:00
+Fecha: 24/03/2025
+------------------------------
