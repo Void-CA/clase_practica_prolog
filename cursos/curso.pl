@@ -6,30 +6,30 @@ ingresar_informacion :-
     write("Hora: "), read(Hora),
     write("Fecha: "), read(Fecha),
 
-    % Abrimos el archivo en modo escritura (sobreescribe todo el contenido)
-    tell('cursos.txt'),
+    open('cursos.txt', append, Stream),
 
     % Escribimos los datos en el archivo
-    write("Curso: "), write(Curso), nl,
-    write("Profesor: "), write(Profesor), nl,
-    write("Proyecto: "), write(Proyecto), nl,
-    write("Hora: "), write(Hora), nl,
-    write("Fecha: "), write(Fecha), nl,
-    write("------------------------------"), nl,
+    write(Stream, "Curso: "), write(Stream, Curso), nl(Stream),
+    write(Stream, "Profesor: "), write(Stream, Profesor), nl(Stream),
+    write(Stream, "Proyecto: "), write(Stream, Proyecto), nl(Stream),
+    write(Stream, "Hora: "), write(Stream, Hora), nl(Stream),
+    write(Stream, "Fecha: "), write(Stream, Fecha), nl(Stream),
+    write(Stream, "------------------------------"), nl(Stream),
 
     % Cerramos el archivo
-    told,
+    close(Stream),
 
     write("Informacion guardada correctamente en cursos.txt"), nl.
 
 leer_informacion :-
     % Abrimos el archivo en modo lectura
-    see('cursos.txt'),
-    
-    % Leemos y mostramos el contenido línea por línea
-    repeat,
-    read_line_to_string(user_input, Linea),
-    (   Linea == end_of_file -> true ; write(Linea), nl, fail),
+    open('cursos.txt', read, Stream),
 
-    % Cerramos el archivo
-    seen.
+    write("Contenido del archivo cursos.txt:"), nl,
+    % Leemos el contenido del archivo línea por línea
+    repeat,
+    read_line_to_string(Stream, Line),
+    (   Line == end_of_file -> !, close(Stream)
+    ;   write(Line), nl,
+        fail
+    ).
