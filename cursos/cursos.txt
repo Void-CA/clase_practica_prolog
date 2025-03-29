@@ -4,3 +4,9 @@ Proyecto: aprende.pl
 Hora: 10:00
 Fecha: 24/03/2025
 ------------------------------
+Curso: Electronica Digital II
+Profesor: Kevin Flores
+Proyecto: Tecnologias IoT con ESP32
+Hora: 10:00
+Fecha: 27/03/2025
+------------------------------

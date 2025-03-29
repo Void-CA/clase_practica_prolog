@@ -1,6 +1,6 @@
-nota:- dynamic nota_prolog/2.
+:- dynamic nota_prolog/2.  % Se declara primero la base de datos dinámica
 
-nota_prolog(acumulado, 10).
+nota_prolog(acumulado, 10).  % Ahora es una regla dinámica
 
 agregar_notas :-
     assertz(nota_prolog(acumulado, 12)),
